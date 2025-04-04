@@ -5,7 +5,7 @@ var game, snake, food;
 game = {
   
   score: 0,
-  fps: 8,
+  fps: 12,
   over: false,
   message: null,
   
@@ -13,7 +13,7 @@ game = {
     game.over = false;
     game.message = null;
     game.score = 0;
-    game.fps = 8;
+    game.fps = 12;
     snake.init();
     food.set();
   },
@@ -126,7 +126,7 @@ snake = {
   checkGrowth: function() {
     if (snake.x == food.x && snake.y == food.y) {
       game.score++;
-      if (game.score % 5 == 0 && game.fps < 60) {
+      if (game.score % 5 == 0 && game.fps < 30) {
         game.fps++;
       }
       food.set();
@@ -189,10 +189,6 @@ addEventListener("keydown", function (e) {
       game.start();
     }
 }, false);
-
-var requestAnimationFrame = window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame;
 
 function loop() {
   if (game.over == false) {
